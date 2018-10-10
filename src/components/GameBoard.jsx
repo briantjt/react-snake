@@ -14,6 +14,7 @@ export class GameBoard extends Component {
 
     updateSpeed(e) {
       this.setState({speed: e.target.value})
+      document.querySelector("select").blur()
     }
   render() {
     
@@ -21,9 +22,9 @@ export class GameBoard extends Component {
       <div>
       <div className="game-menu">
       <select value={this.state.speed} name="Speed" id="" className="button" onChange={this.updateSpeed}>
-      <option value="500">Slow</option>
-      <option selected value="250">Medium</option>
-      <option value="100">Fast</option>
+      <option value="250">Slow</option>
+      <option selected value="150">Medium</option>
+      <option value="75">Fast</option>
       </select>
       </div>
       <div>
