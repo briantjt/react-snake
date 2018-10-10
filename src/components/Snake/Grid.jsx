@@ -11,7 +11,7 @@ export class Grid extends Component {
       snakeArray: [{ x: 4, y: 4 }],
       applePos: { x: 13, y: 4 },
       snakeDirection: right,
-      gameOver: false,
+      gameOver: false
     };
     this.state = this.originalState;
 
@@ -53,8 +53,8 @@ export class Grid extends Component {
 
   restartGame() {
     this.setState(this.originalState);
-    clearInterval(this.tick)
-    this.tick = setInterval(this.updateGameState, this.props.speed) 
+    clearInterval(this.tick);
+    this.tick = setInterval(this.updateGameState, this.props.speed);
   }
 
   checkGameOver(snakeHead) {
@@ -79,8 +79,8 @@ export class Grid extends Component {
 
   componentDidUpdate(prevProps) {
     if (this.props.speed !== prevProps.speed && this.state.gameOver === false) {
-      clearInterval(this.tick)
-      this.tick = setInterval(this.updateGameState, this.props.speed)
+      clearInterval(this.tick);
+      this.tick = setInterval(this.updateGameState, this.props.speed);
     }
   }
 
@@ -160,7 +160,9 @@ export class Grid extends Component {
         {this.state.gameOver ? (
           <div className="gameover-overlay">
             <h1>Game Over!</h1>
-            <button onClick={this.restartGame} className="button secondary">Restart</button>
+            <button onClick={this.restartGame} className="button secondary">
+              Restart
+            </button>
           </div>
         ) : null}
         <div className="snake-grid">
