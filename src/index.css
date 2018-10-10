@@ -1,10 +1,10 @@
 @import url(https://fonts.googleapis.com/css?family=VT323);
 html {
-  font-family: 'VT323' , monospace;
+  font-family: "VT323", monospace;
 }
 
 button {
-  font-family: 'VT323' , monospace;
+  font-family: "VT323", monospace;
 }
 
 body {
@@ -15,5 +15,62 @@ body {
 }
 
 code {
-  font-family: 'VT323' , monospace;
+  font-family: "VT323", monospace;
+}
+
+.button {
+  background: #7c7c7c;
+  border-bottom: 6px inset rgba(0, 0, 0, 0.5);
+  border-left: 6px inset rgba(0, 0, 0, 0.5);
+  border-right: 6px inset rgba(255, 255, 255, 0.5);
+  border-top: 6px inset rgba(255, 255, 255, 0.5);
+  box-sizing: border-box;
+  color: white;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1rem;
+  margin: 1rem;
+  min-width: 50px;
+  padding: 0.5rem;
+  text-transform: uppercase;
+  width: auto;
+}
+
+.button.primary {
+  background: #881400;
+}
+.button.primary:focus {
+    background: #a81000;
+}
+.button.primary:hover {
+    background: #a81000;
+}
+
+.button.secondary {
+  background: #005800;
+}
+.button.secondary:focus {
+    background: #006800;
+}
+.button.secondary:hover {
+    background: #006800;
+}
+
+.button.tertiary {
+  background: #0000bc;
+}
+
+.button.tertiary:focus {
+    background: #0000fc;
+}
+.button.tertiary:hover {
+    background: #0000fc;
+}
+
+select {
+  font-family: "VT323", monospace;
+}
+select:focus {
+  outline: none;
+  font-family: "VT323", monospace;
 }

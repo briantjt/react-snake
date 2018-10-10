@@ -11,7 +11,7 @@ export class Grid extends Component {
       snakeArray: [{ x: 4, y: 4 }],
       applePos: { x: 13, y: 4 },
       snakeDirection: right,
-      gameOver: false
+      gameOver: false,
     };
     this.state = this.originalState;
 
@@ -53,7 +53,8 @@ export class Grid extends Component {
 
   restartGame() {
     this.setState(this.originalState);
-    this.tick = setInterval(this.updateGameState, 100);
+    clearInterval(this.tick)
+    this.tick = setInterval(this.updateGameState, this.props.speed) 
   }
 
   checkGameOver(snakeHead) {
@@ -69,11 +70,18 @@ export class Grid extends Component {
 
   componentDidMount() {
     window.addEventListener("keydown", e => this.controls(e));
-    this.tick = setInterval(this.updateGameState, 100);
+    this.tick = setInterval(this.updateGameState, this.props.speed);
   }
 
   componentWillUnmount() {
     clearInterval(this.tick);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.speed !== prevProps.speed && this.state.gameOver === false) {
+      clearInterval(this.tick)
+      this.tick = setInterval(this.updateGameState, this.props.speed)
+    }
   }
 
   updateGameState() {
@@ -129,7 +137,6 @@ export class Grid extends Component {
       ) {
         newApplePos = appleGen();
       }
-      console.log(newApplePos);
       this.setState({ snakeArray: newSnakeArray, applePos: newApplePos });
     } else {
       let newSnakeArray = this.state.snakeArray.slice(0, -1);
@@ -153,7 +160,7 @@ export class Grid extends Component {
         {this.state.gameOver ? (
           <div className="gameover-overlay">
             <h1>Game Over!</h1>
-            <button onClick={this.restartGame} className="button restart">Restart</button>
+            <button onClick={this.restartGame} className="button secondary">Restart</button>
           </div>
         ) : null}
         <div className="snake-grid">
