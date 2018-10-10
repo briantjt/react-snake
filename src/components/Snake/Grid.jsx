@@ -123,6 +123,7 @@ export class Grid extends Component {
     let newSnakeArray = this.state.snakeArray;
     if (JSON.stringify(snakeHead) === JSON.stringify(this.state.applePos)) {
       newSnakeArray.unshift(snakeHead);
+      this.props.addScore();
       const appleGen = () => {
         return {
           x: Math.floor(Math.random() * 20),

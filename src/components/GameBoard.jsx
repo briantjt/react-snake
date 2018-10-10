@@ -1,38 +1,59 @@
-import React, { Component } from 'react'
-import Grid from './Snake/Grid'
+import React, { Component } from "react";
+import Grid from "./Snake/Grid";
 
 export class GameBoard extends Component {
-    constructor(props) {
-      super(props)
-    
-      this.state = {
-         gridSize: 20,
-         speed: 100
-      }
-      this.updateSpeed = this.updateSpeed.bind(this)
-    }
+  constructor(props) {
+    super(props);
 
-    updateSpeed(e) {
-      this.setState({speed: e.target.value})
-      document.querySelector("select").blur()
-    }
+    this.state = {
+      gridSize: 20,
+      speed: 150,
+      score: 0
+    };
+    this.updateSpeed = this.updateSpeed.bind(this);
+    this.addScore = this.addScore.bind(this);
+  }
+
+  addScore() {
+    this.setState(prevState => {
+      return { score: prevState.score + 10 };
+    });
+  }
+  updateSpeed(e) {
+    this.setState({ speed: e.target.value });
+    document.querySelector("select").blur();
+  }
   render() {
-    
     return (
       <div>
-      <div className="game-menu">
-      <select value={this.state.speed} name="Speed" id="" className="button" onChange={this.updateSpeed}>
-      <option value="250">Slow</option>
-      <option selected value="150">Medium</option>
-      <option value="75">Fast</option>
-      </select>
+        <div className="game-menu">
+          <h1 className="score">Score: {this.state.score}</h1>
+          <div className="button-container">
+            <select
+              value={this.state.speed}
+              name="Speed"
+              id=""
+              className="button"
+              onChange={this.updateSpeed}
+            >
+              <option value="500">Snail</option>
+              <option value="250">Slow</option>
+              <option value="150">Medium</option>
+              <option value="75">Fast</option>
+              <option value="25">Extreme</option>
+            </select>
+          </div>
+        </div>
+        <Grid
+          gridSize={this.state.gridSize}
+          snakeArray={this.state.snakeArray}
+          applePos={this.state.applePos}
+          speed={this.state.speed}
+          addScore={this.addScore}
+        />
       </div>
-      <div>
-          <Grid gridSize={this.state.gridSize} snakeArray={this.state.snakeArray} applePos={this.state.applePos} speed={this.state.speed} />
-      </div>
-      </div>
-    )
+    );
   }
 }
 
-export default GameBoard
+export default GameBoard;

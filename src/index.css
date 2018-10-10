@@ -3,6 +3,10 @@ html {
   font-family: "VT323", monospace;
 }
 
+body {
+  background: darkgray;
+}
+
 button {
   font-family: "VT323", monospace;
 }
@@ -40,20 +44,20 @@ code {
   background: #881400;
 }
 .button.primary:focus {
-    background: #a81000;
+  background: #a81000;
 }
 .button.primary:hover {
-    background: #a81000;
+  background: #a81000;
 }
 
 .button.secondary {
   background: #005800;
 }
 .button.secondary:focus {
-    background: #006800;
+  background: #006800;
 }
 .button.secondary:hover {
-    background: #006800;
+  background: #006800;
 }
 
 .button.tertiary {
@@ -61,10 +65,10 @@ code {
 }
 
 .button.tertiary:focus {
-    background: #0000fc;
+  background: #0000fc;
 }
 .button.tertiary:hover {
-    background: #0000fc;
+  background: #0000fc;
 }
 
 select {
