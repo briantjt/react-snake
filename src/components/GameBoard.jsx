@@ -12,6 +12,7 @@ export class GameBoard extends Component {
     };
     this.updateSpeed = this.updateSpeed.bind(this);
     this.addScore = this.addScore.bind(this);
+    this.resetScore = this.resetScore.bind(this);
   }
 
   addScore() {
@@ -19,10 +20,16 @@ export class GameBoard extends Component {
       return { score: prevState.score + 10 };
     });
   }
+
+  resetScore() {
+    this.setState({ score: 0 });
+  }
+
   updateSpeed(e) {
     this.setState({ speed: e.target.value });
     document.querySelector("select").blur();
   }
+
   render() {
     return (
       <div>
@@ -50,6 +57,7 @@ export class GameBoard extends Component {
           applePos={this.state.applePos}
           speed={this.state.speed}
           addScore={this.addScore}
+          resetScore={this.resetScore}
         />
       </div>
     );

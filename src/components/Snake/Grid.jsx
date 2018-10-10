@@ -52,6 +52,7 @@ export class Grid extends Component {
   }
 
   restartGame() {
+    this.props.resetScore()
     this.setState(this.originalState);
     clearInterval(this.tick);
     this.tick = setInterval(this.updateGameState, this.props.speed);

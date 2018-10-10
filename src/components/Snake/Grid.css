@@ -19,7 +19,7 @@
   box-sizing: border-box;
   width: 20px;
   height: 20px;
-  background-color: green;
+  background-color: olivedrab;
 }
 
 .grid-square {
@@ -27,7 +27,7 @@
   box-sizing: border-box;
   width: 20px;
   height: 20px;
-  background-color: yellow;
+  background-color: darkturquoise;
 }
 
 .apple-square {
@@ -35,7 +35,7 @@
   box-sizing: border-box;
   width: 20px;
   height: 20px;
-  background-color: red;
+  background-color: darkmagenta;
 }
 .snake-grid {
   box-sizing: content-box;
