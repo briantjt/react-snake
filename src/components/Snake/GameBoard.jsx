@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Grid from "./Snake/Grid";
+import Grid from "./Grid";
 
 export class GameBoard extends Component {
   constructor(props) {
@@ -53,8 +53,6 @@ export class GameBoard extends Component {
         </div>
         <Grid
           gridSize={this.state.gridSize}
-          snakeArray={this.state.snakeArray}
-          applePos={this.state.applePos}
           speed={this.state.speed}
           addScore={this.addScore}
           resetScore={this.resetScore}
