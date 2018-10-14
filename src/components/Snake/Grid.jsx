@@ -32,9 +32,7 @@ export class Grid extends Component {
 
   controls(e) {
     // Check if input control is a valid move, e.g. snake cannot move right if it is already moving left or right
-    let snakeHead = this.state.snakeArray[0];
-    let snakeBody = this.state.snakeArray[1];
-    return checkValidMove(e.keyCode, snakeHead, snakeBody)
+    return checkValidMove(e.keyCode, this.state.snakeArray[0], this.state.snakeArray[1])
       ? this.setState({ snakeDirection: e.keyCode })
       : null;
   }
