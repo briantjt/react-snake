@@ -15,7 +15,7 @@ export class Grid extends Component {
   constructor(props) {
     super(props);
     this.originalState = {
-      snakeArray: [{ x: 4, y: 4 }],
+      snakeArray: [{ x: 4, y: 4 }, { x: 3, y: 4 }],
       applePos: { x: 13, y: 4 },
       snakeDirection: right,
       gameOver: false
@@ -32,7 +32,11 @@ export class Grid extends Component {
 
   controls(e) {
     // Check if input control is a valid move, e.g. snake cannot move right if it is already moving left or right
-    return checkValidMove(e.keyCode, this.state.snakeArray[0], this.state.snakeArray[1])
+    return checkValidMove(
+      e.keyCode,
+      this.state.snakeArray[0],
+      this.state.snakeArray[1]
+    )
       ? this.setState({ snakeDirection: e.keyCode })
       : null;
   }

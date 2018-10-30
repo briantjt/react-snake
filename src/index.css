@@ -5,7 +5,8 @@ html {
 
 body {
   background: black;
-  color: #C5C8D4
+  color: #C5C8D4;
+  height: 100vh
 }
 
 button {
