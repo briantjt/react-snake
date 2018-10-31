@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar/Navbar";
 import Login from "./components/Modals/Login";
 import Leaderboard from "./components/Modals/Leaderboard";
 import Signup from "./components/Modals/Signup";
+import "./App.css";
 class App extends Component {
   constructor(props) {
     super(props);
@@ -42,17 +43,21 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="App">
-        <Navbar
-          login={this.login}
-          signup={this.signup}
-          leaderboard={this.leaderboard}
-        />
-        <GameBoard />
-        <Login closeLogin={this.closeLogin} show={this.state.login} />
-        <Signup closeSignup={this.closeSignup} show={this.state.signup} />
+      <div className="app">
+        <div>
+          <Navbar
+            login={this.login}
+            signup={this.signup}
+            leaderboard={this.leaderboard}
+          />
+        </div>
+        <div className="main-board">
+          <GameBoard />
+        </div>
+        <Login handleClose={this.closeLogin} show={this.state.login} />
+        <Signup handleClose={this.closeSignup} show={this.state.signup} />
         <Leaderboard
-          closeLeaderboard={this.closeLeaderboard}
+          handleClose={this.closeLeaderboard}
           show={this.state.leaderboard}
         />
       </div>
