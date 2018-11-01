@@ -58,10 +58,11 @@ export default class Signup extends Component {
       ? "modal-custom display-block"
       : "modal-custom display-none";
     return (
-      <div className={toggleModal}>
+      <div className={toggleModal} onClick={this.props.handleClose}>
         <div
           className="modal-main"
           style={{ marginTop: "50px", width: "700px" }}
+          onClick={e => e.stopPropagation()}
         >
           <h2 style={{ marginBottom: "40px" }}>Registration</h2>
           <form onSubmit={this.handleSubmit}>

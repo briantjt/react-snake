@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Grid from "./Grid";
-
+const axios = require("axios");
+axios.defaults.withCredentials = true
 export class GameBoard extends Component {
   constructor(props) {
     super(props);
@@ -13,6 +14,7 @@ export class GameBoard extends Component {
     this.updateSpeed = this.updateSpeed.bind(this);
     this.addScore = this.addScore.bind(this);
     this.resetScore = this.resetScore.bind(this);
+    this.postScore = this.postScore.bind(this);
   }
 
   addScore() {
@@ -30,6 +32,18 @@ export class GameBoard extends Component {
     document.querySelector("select").blur();
   }
 
+  async postScore() {
+    try {
+      // @ts-ignore
+      let res = await axios("http://localhost:3001/api/score/new_score", {
+        method: "post",
+        data: { score: this.state.score },
+        withCredentials: true
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  }
   render() {
     return (
       <div>
@@ -56,6 +70,7 @@ export class GameBoard extends Component {
           speed={this.state.speed}
           addScore={this.addScore}
           resetScore={this.resetScore}
+          postScore={this.postScore}
         />
       </div>
     );

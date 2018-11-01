@@ -48,12 +48,13 @@ export class Grid extends Component {
     this.tick = setInterval(this.updateGameState, this.props.speed);
   }
 
-  checkGameOver(snakeHead) {
+  async checkGameOver(snakeHead) {
     if (
       this.state.snakeArray.some(snakePos => objectEqual(snakePos, snakeHead))
     ) {
       clearInterval(this.tick);
       this.setState({ gameOver: true });
+      await this.props.postScore()
     }
   }
 

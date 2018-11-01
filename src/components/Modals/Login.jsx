@@ -1,3 +1,4 @@
+import "./modals.css";
 import React, { Component } from "react";
 const axios = require("axios");
 export default class Login extends Component {
@@ -27,10 +28,12 @@ export default class Login extends Component {
       "http://localhost:3001/api/user/login",
       user
     );
-    if (response.status === 202){
-      alert("Successfully logged in!")
-      this.props.handleClose()
-      this.setState({username: "", password: ""})
+    if (response.status === 202) {
+      alert("Successfully logged in!");
+      this.props.setLogin();
+      this.props.handleClose();
+      this.props.setUsername(response.data.user.username);
+      this.setState({ username: "", password: "" });
     }
   }
   render() {
@@ -38,12 +41,13 @@ export default class Login extends Component {
       ? "modal-custom display-block"
       : "modal-custom display-none";
     return (
-      <div className={toggleModal}>
+      <div className={toggleModal} onClick={this.props.handleClose}>
         <div
           className="modal-main"
           style={{ marginTop: "50px", width: "700px" }}
+          onClick={e => e.stopPropagation()}
         >
-          <h2 style={{ marginBottom: "40px" }}>Registration</h2>
+          <h2 style={{ marginBottom: "40px" }}>User Login</h2>
           <form onSubmit={this.handleSubmit}>
             <div className="form-group">
               <input
@@ -69,13 +73,13 @@ export default class Login extends Component {
             </div>
             <div className="form-group">
               <button type="submit" className="btn btn-primary">
-              Login
+                Login
               </button>
               <button
                 className="btn btn-danger"
                 onClick={this.props.handleClose}
               >
-              Cancel
+                Cancel
               </button>
             </div>
           </form>

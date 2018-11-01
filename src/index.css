@@ -1,16 +1,20 @@
-@import url(https://fonts.googleapis.com/css?family=VT323);
+@import url(https://fonts.googleapis.com/css?family=Press+Start+2P);
 html {
-  font-family: "VT323", monospace;
+  font-family: "Press Start 2P" !important;
 }
-
+root {
+  font-family: "Press Start 2P" !important;
+}
 body {
   background: black;
   color: #C5C8D4;
-  height: 100vh
+  height: 100vh;
+  font-family: "Press Start 2P" !important;
+  font-size: 1rem !important;
 }
 
 button {
-  font-family: "VT323", monospace;
+  font-family: "Press Start 2P" !important;
 }
 
 body {
@@ -74,9 +78,9 @@ code {
 }
 
 select {
-  font-family: "VT323", monospace;
+  font-family: "Press Start 2p", monospace;
 }
 select:focus {
   outline: none;
-  font-family: "VT323", monospace;
+  font-family: "Press Start 2P", monospace;
 }
