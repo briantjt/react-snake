@@ -12,7 +12,7 @@ export default class Leaderboard extends Component {
   }
   async getScores() {
     let res = await axios.get(
-      process.env.REACT_APP_BACKEND_URL + "/api/score/leaderboard"
+      process.env.REACT_APP_BACKEND_API_URL + "/api/score/leaderboard"
     );
     this.setState({ scores: res.data });
   }

@@ -9,7 +9,7 @@ export default class Navbar extends Component {
 
   async logout() {
     let res = await axios.post(
-      process.env.REACT_APP_BACKEND_URL + "/api/user/logout"
+      process.env.REACT_APP_BACKEND_API_URL + "/api/user/logout"
     );
     if (res.status === 200) {
       alert("You have been logged out.");

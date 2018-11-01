@@ -46,7 +46,7 @@ export class GameBoard extends Component {
     try {
       // @ts-ignore
       let res = await axios(
-        process.env.REACT_APP_BACKEND_URL + "/api/score/high_score",
+        process.env.REACT_APP_BACKEND_API_URL + "/api/score/high_score",
         {
           method: "get"
         }
@@ -60,7 +60,7 @@ export class GameBoard extends Component {
     try {
       // @ts-ignore
       let res = await axios(
-        process.env.REACT_APP_BACKEND_URL + "/api/score/new_score",
+        process.env.REACT_APP_BACKEND_API_URL + "/api/score/new_score",
         {
           method: "post",
           data: { score: this.state.score },
