@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Grid from "./Grid";
 const axios = require("axios");
-axios.defaults.withCredentials = true
+axios.defaults.withCredentials = true;
 export class GameBoard extends Component {
   constructor(props) {
     super(props);
@@ -9,17 +9,27 @@ export class GameBoard extends Component {
     this.state = {
       gridSize: 20,
       speed: 150,
-      score: 0
+      score: 0,
+      highScore: 0
     };
     this.updateSpeed = this.updateSpeed.bind(this);
     this.addScore = this.addScore.bind(this);
     this.resetScore = this.resetScore.bind(this);
     this.postScore = this.postScore.bind(this);
+    this.getHighScore = this.getHighScore.bind(this);
   }
-
+  componentDidUpdate(prevProps) {
+    if (prevProps.isLoggedIn !== this.props.isLoggedIn) {
+      this.getHighScore();
+    }
+  }
   addScore() {
     this.setState(prevState => {
-      return { score: prevState.score + 10 };
+      if (this.state.score === this.state.highScore)
+        return {
+          score: prevState.score + 10,
+          highScore: prevState.score + 10
+        };
     });
   }
 
@@ -32,6 +42,17 @@ export class GameBoard extends Component {
     document.querySelector("select").blur();
   }
 
+  async getHighScore() {
+    try {
+      // @ts-ignore
+      let res = await axios("http://localhost:3001/api/score/high_score", {
+        method: "get"
+      });
+      this.setState({ highScore: res.data.score });
+    } catch (err) {
+      console.log(err);
+    }
+  }
   async postScore() {
     try {
       // @ts-ignore
@@ -48,7 +69,11 @@ export class GameBoard extends Component {
     return (
       <div>
         <div className="game-menu">
-          <h1 className="score">Score: {this.state.score}</h1>
+          <div className="scores">
+            <h1 className="score">Score</h1>
+            <h5>Current: {this.state.score}</h5>
+            <h5>Highest: {this.state.highScore}</h5>
+          </div>
           <div className="button-container">
             <select
               value={this.state.speed}
@@ -71,6 +96,7 @@ export class GameBoard extends Component {
           addScore={this.addScore}
           resetScore={this.resetScore}
           postScore={this.postScore}
+          getHighScore={this.getHighScore}
         />
       </div>
     );

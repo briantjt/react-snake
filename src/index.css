@@ -24,10 +24,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-code {
-  font-family: "VT323", monospace;
-}
-
 .button {
   background: #7c7c7c;
   border-bottom: 6px inset rgba(0, 0, 0, 0.5);

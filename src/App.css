@@ -8,9 +8,11 @@
 }
 
 .main-board {
-    margin:auto
+    margin:auto;
+    height: 100vh;
 }
 
 .button-wrapper {
     margin-top: 20px;
+    padding: 10px
 }

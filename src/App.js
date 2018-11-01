@@ -62,7 +62,6 @@ class App extends Component {
   render() {
     return (
       <div className="app">
-        <div>
           <Navbar
             login={this.login}
             signup={this.signup}
@@ -72,9 +71,8 @@ class App extends Component {
             username={this.state.username}
             clearUsername={this.clearUsername}
           />
-        </div>
         <div className="main-board">
-          <GameBoard />
+          <GameBoard isLoggedIn={this.state.isLoggedIn}/>
         </div>
         <Login
           handleClose={this.closeLogin}
