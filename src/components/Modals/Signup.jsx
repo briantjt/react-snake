@@ -32,7 +32,7 @@ export default class Signup extends Component {
         }
       };
       let response = await axios
-        .post("http://localhost:3001/api/user/signup", user)
+        .post(process.env.REACT_APP_BACKEND_URL + "/api/user/signup", user)
         .then(res => {
           console.log(res);
           return res;

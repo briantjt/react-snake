@@ -25,7 +25,7 @@ export default class Login extends Component {
       user: { username: this.state.username, password: this.state.password }
     };
     let response = await axios.post(
-      "http://localhost:3001/api/user/login",
+      process.env.REACT_APP_BACKEND_URL + "/api/user/login",
       user
     );
     if (response.status === 202) {

@@ -11,7 +11,9 @@ export default class Leaderboard extends Component {
     this.getScores = this.getScores.bind(this);
   }
   async getScores() {
-    let res = await axios.get("http://localhost:3001/api/score/leaderboard");
+    let res = await axios.get(
+      process.env.REACT_APP_BACKEND_URL + "/api/score/leaderboard"
+    );
     this.setState({ scores: res.data });
   }
   async componentDidMount() {

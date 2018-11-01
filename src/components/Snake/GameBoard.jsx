@@ -45,9 +45,12 @@ export class GameBoard extends Component {
   async getHighScore() {
     try {
       // @ts-ignore
-      let res = await axios("http://localhost:3001/api/score/high_score", {
-        method: "get"
-      });
+      let res = await axios(
+        process.env.REACT_APP_BACKEND_URL + "/api/score/high_score",
+        {
+          method: "get"
+        }
+      );
       this.setState({ highScore: res.data.score });
     } catch (err) {
       console.log(err);
@@ -56,11 +59,14 @@ export class GameBoard extends Component {
   async postScore() {
     try {
       // @ts-ignore
-      let res = await axios("http://localhost:3001/api/score/new_score", {
-        method: "post",
-        data: { score: this.state.score },
-        withCredentials: true
-      });
+      let res = await axios(
+        process.env.REACT_APP_BACKEND_URL + "/api/score/new_score",
+        {
+          method: "post",
+          data: { score: this.state.score },
+          withCredentials: true
+        }
+      );
     } catch (err) {
       console.log(err);
     }
