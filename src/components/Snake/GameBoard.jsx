@@ -24,13 +24,18 @@ export class GameBoard extends Component {
     }
   }
   addScore() {
-    this.setState(prevState => {
-      if (this.state.score === this.state.highScore)
+    if (this.state.score === this.state.highScore) {
+      this.setState(prevState => {
         return {
           score: prevState.score + 10,
           highScore: prevState.score + 10
         };
-    });
+      });
+    } else {
+      this.setState(prevState => {
+        return { score: prevState.score + 10 };
+      });
+    }
   }
 
   resetScore() {
