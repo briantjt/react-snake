@@ -99,6 +99,7 @@ export class GameBoard extends Component {
               <option value="75">Fast</option>
               <option value="25">Extreme</option>
             </select>
+            
           </div>
         </div>
         <Grid

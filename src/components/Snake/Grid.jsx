@@ -18,7 +18,8 @@ export class Grid extends Component {
       snakeArray: [{ x: 4, y: 4 }, { x: 3, y: 4 }],
       applePos: { x: 13, y: 4 },
       snakeDirection: right,
-      gameOver: false
+      gameOver: false,
+      paused: false
     };
     this.state = this.originalState;
     this.gridMatrix = this.createGridMatrix();
@@ -28,17 +29,32 @@ export class Grid extends Component {
     this.checkGameOver = this.checkGameOver.bind(this);
     this.restartGame = this.restartGame.bind(this);
     this.createGridMatrix = this.createGridMatrix.bind(this);
+    this.togglePause = this.togglePause.bind(this);
   }
 
   controls(e) {
-    // Check if input control is a valid move, e.g. snake cannot move right if it is already moving left or right
-    return checkValidMove(
-      e.keyCode,
-      this.state.snakeArray[0],
-      this.state.snakeArray[1]
-    )
-      ? this.setState({ snakeDirection: e.keyCode })
-      : null;
+    if (e.key === "p") {
+      this.togglePause();
+    } else {
+      // Check if input control is a valid move, e.g. snake cannot move right if it is already moving left or right
+      return checkValidMove(
+        e.keyCode,
+        this.state.snakeArray[0],
+        this.state.snakeArray[1]
+      )
+        ? this.setState({ snakeDirection: e.keyCode })
+        : null;
+    }
+  }
+
+  togglePause() {
+    if (this.state.paused === false) {
+      clearInterval(this.tick);
+      this.setState({ paused: true });
+    } else {
+      this.tick = setInterval(this.updateGameState, this.props.speed);
+      this.setState({ paused: false });
+    }
   }
 
   restartGame() {
@@ -54,7 +70,7 @@ export class Grid extends Component {
     ) {
       clearInterval(this.tick);
       this.setState({ gameOver: true });
-      await this.props.postScore()
+      await this.props.postScore();
     }
   }
 
@@ -78,7 +94,11 @@ export class Grid extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.speed !== prevProps.speed && this.state.gameOver === false) {
+    if (
+      this.props.speed !== prevProps.speed &&
+      this.state.gameOver === false &&
+      this.state.paused === false
+    ) {
       clearInterval(this.tick);
       this.tick = setInterval(this.updateGameState, this.props.speed);
     }
@@ -109,9 +129,17 @@ export class Grid extends Component {
       <div className="grid-container">
         {this.state.gameOver ? (
           <div className="gameover-overlay">
-            <h1>Game Over!</h1>
+            <h1>GAME OVER</h1>
             <button onClick={this.restartGame} className="button secondary">
-              Restart
+              RESTART
+            </button>
+          </div>
+        ) : null}
+        {this.state.paused ? (
+          <div className="gameover-overlay">
+            <h1>PAUSED</h1>
+            <button onClick={this.togglePause} className="button secondary">
+              RESUME
             </button>
           </div>
         ) : null}

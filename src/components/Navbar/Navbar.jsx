@@ -1,5 +1,7 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
+import wasd from "../../images/wasd.png";
+import arrowkeys from "../../images/arrowkeys.png";
 const axios = require("axios");
 export default class Navbar extends Component {
   constructor(props) {
@@ -26,7 +28,7 @@ export default class Navbar extends Component {
         {this.props.isLoggedIn ? (
           <li className="nav-item">
             <h5 className="nav-link text-dark">
-              {String(this.props.username).toUpperCase()}
+              {String(this.props.username).toUpperCase()}o
             </h5>
           </li>
         ) : (
@@ -59,6 +61,14 @@ export default class Navbar extends Component {
           >
             LOGOUT
           </a>
+        </li>
+        <li className="nav-item controls">
+          <div>
+            <h5 className="nav-link text-dark">CONTROLS</h5>
+            <img className="images" src={wasd} width="100px" alt=""/>
+            <img src={arrowkeys} width="100px" alt="" />
+            <h6 className="nav-link text-dark"> 🄿 - PAUSE</h6>
+          </div>
         </li>
       </ul>
     );
