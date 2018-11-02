@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 const axios = require("axios");
 export default class Navbar extends Component {
@@ -19,7 +20,7 @@ export default class Navbar extends Component {
   render() {
     return (
       <ul className="nav flex-column bg-light">
-        <li className="nav-item">
+        <li className="nav-item game-title">
           <h1 className="nav-link text-dark">SNAKE</h1>
         </li>
         {this.props.isLoggedIn ? (
