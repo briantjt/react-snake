@@ -28,7 +28,7 @@ export default class Navbar extends Component {
         {this.props.isLoggedIn ? (
           <li className="nav-item">
             <h5 className="nav-link text-dark">
-              {String(this.props.username).toUpperCase()}o
+              {String(this.props.username).toUpperCase()}
             </h5>
           </li>
         ) : (
