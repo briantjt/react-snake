@@ -31,7 +31,7 @@ export default class Leaderboard extends Component {
       : "modal-custom display-none";
     return (
       <div className={toggleModal} onClick={this.props.handleClose}>
-        <div className="modal-main" onClick={e => e.stopPropagation()}>
+        <div className="modal-main text-dark" onClick={e => e.stopPropagation()}>
           <table className="table">
             <thead>
               <tr>

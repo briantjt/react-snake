@@ -43,7 +43,7 @@ export default class Login extends Component {
     return (
       <div className={toggleModal} onClick={this.props.handleClose}>
         <div
-          className="modal-main"
+          className="modal-main text-dark"
           style={{ marginTop: "50px", width: "700px" }}
           onClick={e => e.stopPropagation()}
         >
